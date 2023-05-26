@@ -5,9 +5,11 @@ import speech_recognition as sr
 import pyttsx3
 
 def initialize_engine():
-    engine = pyttsx3.init()
-    rate = engine.getProperty('rate')   
-    engine.setProperty('rate', 180)     
+    engine = pyttsx3.init('sapi5')
+    # rate = engine.getProperty('rate')   
+    # engine.setProperty('rate', 150)   
+    voices = engine.getProperty('voices')      
+    engine.setProperty('voice', voices[1].id)  
     return engine
 
 def speak(engine, text):
@@ -15,7 +17,7 @@ def speak(engine, text):
     engine.runAndWait()
 
 
-def listen():
+def listen(engine):
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("Listening...")
@@ -24,7 +26,7 @@ def listen():
     try:
         command = r.recognize_google(audio)
     except Exception as e:
-        print("Sorry, I didn't understand that. Can you please repeat?")
-        return "None"
+        speak(engine, "Sorry, I didn't understand that")
+        return listen(engine)
 
     return command.lower()

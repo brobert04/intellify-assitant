@@ -1,15 +1,13 @@
 import os
 import openai
 
-openai.api_key = os.getenv('OPENAI_API_KEY')
+openai.api_key = "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"
 
-def ask_gpt(engine, speak, listen, command):
-    speak(engine, "What would you like to ask?")
-    question = listen()
+def ask_gpt(engine, speak, command):
     speak(engine, "Let me think about that.")
     response = openai.Completion.create(
         model="text-davinci-003",
-        prompt=question,
+        prompt=command,
         temperature=0,
         max_tokens=150,
         top_p=1.0,
