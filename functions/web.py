@@ -2,15 +2,20 @@ import webbrowser
 import bs4
 import urllib.request
 
-def search_web(engine, speak, command):
-    search_terms = command.replace("search", "").strip()
-    if search_terms:
+def search_web(engine, speak,listen, command):
+    speak(engine, "Do you want to search for something?")
+    answer = listen(engine)
+    if "yes" in answer or "yeah" in answer:
+        speak(engine, "What do you want to search for?")
+        search_terms = listen(engine)
         url = f"https://www.google.com/search?q={search_terms}"
-        speak(engine, f"Searching for '{search_terms}'")
+        speak(engine, f"Searching for '{search_terms}' on Google")
         webbrowser.open(url)
     else:
-        speak(engine, "Please provide a search term.")
-
+        url = "https://www.google.com"
+        speak(engine, "Opening Google")
+        webbrowser.open(url)
+    
 
 def open_youtube(engine, speak, listen):
     speak(engine, "Do you want to search for something?")

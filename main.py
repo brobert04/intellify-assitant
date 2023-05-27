@@ -13,6 +13,7 @@ from functions.note import create_note
 from functions.weather import get_weather
 from functions.actions import take_screenshot, shutdown, restart, logout
 from functions.send_mail import send_mail
+from g_calendar import create_event, list_events
 import os
 
 
@@ -33,8 +34,8 @@ def main():
             set_reminder(engine, speak, listen, command)
         elif "to-do" in command or "todo" in command:
             create_todo_list(engine, speak, listen, command)
-        elif "search" in command:
-            search_web(engine, speak, command)
+        elif "open google" in command:
+            search_web(engine, speak, listen, command)
         elif "open youtube" in command:
             open_youtube(engine, speak,listen)
         elif "open netflix" in command:
@@ -103,6 +104,12 @@ def main():
 
         elif "send an email" in command:
             send_mail(engine, speak, listen)
+
+        elif "create an event" in command or "create an event" in command or "schedule an event" in command:
+            create_event(engine, speak, listen)
+        elif "list all events" in command or "list all calendar events" in command:
+            list_events(speak, engine)
+    
         elif "weather" in command:
             get_weather(engine, speak, command)
         elif "screenshot" in command:

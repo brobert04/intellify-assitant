@@ -1,7 +1,7 @@
 import os
 import openai
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 def ask_gpt(engine, speak, command):
     speak(engine, "Let me think about that.")
