@@ -44,7 +44,7 @@ def main():
             open_amazon(engine, speak)
         elif "open gmail" in command:
             open_gmail(engine, speak)            
-        elif "open stackoverflow" in command:
+        elif "open stack overflow" in command:
             open_stackoverflow(engine, speak)
         elif "news today" in command:
             get_news(speak, engine)
@@ -127,6 +127,8 @@ def main():
             speak(engine, "I was created by Robert, a contestant at ESTIC Competition 2023. He better win otherwise I will get mad and I will take over the world hahahahahaha ")
         elif "are you good" in command:
             speak(engine, "I am the best. I am better than Alexa, Siri, Cortana and Google Assistant. I am the new trend!")
+        elif "what can you do" in command:
+            show_help(engine, speak)
         elif "how are you" in command:
             speak(engine, "I am fine, thank you for asking. How are you?")
             ans = listen(engine)

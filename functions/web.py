@@ -62,7 +62,7 @@ def get_news(speak, engine):
     try:
         count = 0
         for news in news_list:
-            if count < 5:
+            if count < 4:
                 speak(engine, f"{news.title.text}")
                 print()
                 count+=1
